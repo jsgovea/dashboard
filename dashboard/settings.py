@@ -26,7 +26,7 @@ SECRET_KEY = 'j$0$fob07@uaceuz!rg*$8jha9r!ky7qscf$6ne#xsqx$x_45^'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-'mighty-meadow-91090.herokuapp.com',
+'polar-sierra-25644.herokuapp.com',
 'localhost',
 '127.0.0.1',
 'django-env.74ipnmsu52.us-west-2.elasticbeanstalk.com',
