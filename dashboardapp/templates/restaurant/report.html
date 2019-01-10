@@ -1,0 +1,113 @@
+{% extends 'restaurant/base.html' %}
+
+{% block script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js">
+
+    </script>
+{% endblock %}
+
+{% block page %}
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Revenue by week -->
+            <div class="panel">
+                <div class="panel-heading bg-blue">
+                    <h4 class="panel-title text-center text-white">
+                        Ganancias semanales
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <canvas id="revenueChart" height="150"></canvas>
+                    <script>
+                        var ctx = document.getElementById("revenueChart").getContext("2d");
+                        var data = {
+                            labels: ["Lun", "Mar", "Mier", "Jue", "Sáb", "Dom"],
+                            datasets: [
+                                {
+                                    label: "Ganancias de la semana",
+                                    backgroundColor:  "rgba(54,162,235, 0.9)",
+                                    hoverbackgroundColor:  "rgba(54,162,235, 1)",
+                                    data: {{ revenue }}
+                                }
+                            ]
+                        };
+
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: data
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <!-- Orders by week -->
+
+
+            <div class="panel">
+                <div class="panel-heading bg-blue">
+                    <h4 class="panel-title text-center text-white">
+                        Ordenes semanales
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <canvas id="orderChart" height="150"></canvas>
+                    <script>
+                        var ctx = document.getElementById("orderChart").getContext("2d");
+                        var data = {
+                            labels: ["Lun", "Mar", "Mier", "Jue", "Sáb", "Dom"],
+                            datasets: [
+                                {
+                                    label: "Ordenes de la semana",
+                                    backgroundColor:  "rgba(255,99,132, 0.9)",
+                                    hoverbackgroundColor:  "rgba(255,99,132, 1)",
+                                    data: {{ orders }}
+                                }
+                            ]
+                        };
+
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: data
+                        });
+                    </script>
+                </div>
+            </div>
+
+        </div>
+
+    <div class="col-lg-4">
+
+        <!-- Top 3 meals -->
+
+         <div class="panel">
+                <div class="panel-heading bg-blue">
+                    <h4 class="panel-title text-center text-white">
+                         Comidas preferidas
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <canvas id="mealChart" height="242"></canvas>
+                    <script>
+                        var ctx = document.getElementById("mealChart").getContext("2d");
+                        var data = {
+                            labels: {{ meal.labels|safe }},
+                            datasets: [
+                                {
+                                    backgroundColor:  [
+                                        "#36A2EB", "#FFCE56", "#FF6384"
+                                    ],
+                                    data: {{ meal.data }}
+                                }
+                            ]
+                        };
+
+                        new Chart(ctx, {
+                            type: 'pie',
+                            data: data
+                        });
+                    </script>
+                </div>
+            </div>
+    </div>
+    </div>
+{% endblock %}
