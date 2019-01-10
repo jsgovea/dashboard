@@ -29,7 +29,6 @@ ALLOWED_HOSTS = [
 'polar-sierra-25644.herokuapp.com',
 'localhost',
 '127.0.0.1',
-'django-env.74ipnmsu52.us-west-2.elasticbeanstalk.com',
 ]
 
 
