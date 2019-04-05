@@ -1,3 +1,2 @@
-test/*.rb linguist-vendored
-lib/linguist.rb linguist-language=Python
-lib/linguist/classifier.rb linguist-generated
+* linguist-vendored
+*.py linguist-vendored=false
